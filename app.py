@@ -71,7 +71,9 @@ if user_input:
         with st.spinner("Thinking & calculating..."):
             agent = get_agent()
             if agent is not None:
-                result = agent.invoke({"messages": st.session_state.messages})
+                result = asyncio.run(
+                    agent.ainvoke({"messages": st.session_state.messages})
+                )
                 st.session_state.messages = result["messages"]
                 final_reply = st.session_state.messages[-1].content
                 st.write(final_reply)
