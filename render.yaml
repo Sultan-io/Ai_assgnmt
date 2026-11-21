@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: cgpa-mcp-server
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server/server.py
+    healthCheckPath: /mcp

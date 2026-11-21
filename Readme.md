@@ -24,3 +24,15 @@
 fastmcp list server/server.py
 fastmcp call server/server.py get_credit_hours semesters='[5,6]'
 ```
+
+## Deploy the MCP server to Render
+
+Create a **Web Service** on Render and connect this GitHub repository:
+
+- Build command: `pip install -r requirements.txt`
+- Start command: `python server/server.py`
+- Health check path: `/mcp`
+
+Render supplies the `PORT` environment variable automatically. After deployment,
+use the generated HTTPS URL, for example `https://cgpa-mcp-server.onrender.com/mcp`,
+as `MCP_URL` in the agent `.env` file.
